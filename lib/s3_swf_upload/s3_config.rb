@@ -8,8 +8,7 @@ module S3SwfUpload
     def self.load_config
       begin
         filename = "#{Rails.root}/config/amazon_s3.yml"
-        file = File.open(filename)
-        config = YAML.load(file)[Rails.env]
+        config = YAML.load(ERB.new(File.read(filename)).result)[Rails.env]
 
         if config == nil
           raise "Could not load config options for #{Rails.env} from #{filename}."
