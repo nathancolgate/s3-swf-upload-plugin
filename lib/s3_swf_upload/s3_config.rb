@@ -1,6 +1,7 @@
 module S3SwfUpload
   class S3Config
-    require 'yaml'
+    require 'erb' unless defined?(ERB)
+    require 'yaml' unless defined?(YAML)
 
     cattr_reader :access_key_id, :secret_access_key
     cattr_accessor :bucket, :max_file_size, :acl
@@ -8,8 +9,10 @@ module S3SwfUpload
     def self.load_config
       begin
         filename = "#{Rails.root}/config/amazon_s3.yml"
-        file = File.open(filename)
-        config = YAML.load(file)[Rails.env]
+
+        buf = IO.read(filename)
+        expanded = ERB.new(buf).result(binding)
+        config = YAML.load(expanded)[Rails.env]
 
         if config == nil
           raise "Could not load config options for #{Rails.env} from #{filename}."
