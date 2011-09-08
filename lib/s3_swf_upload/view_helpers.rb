@@ -165,4 +165,4 @@ module S3SwfUpload
   end
 end
 
-ActionView::Base.send(:include, S3SwfUpload::ViewHelpers)
+ActionView::Base.send(:include, S3SwfUpload::ViewHelpers) if defined?(ActionView)
