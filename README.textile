@@ -182,7 +182,11 @@ You bet.  The Rails 3 specific gem only makes installation and setup easier. Her
 * install it as a plugin <code>script/plugin install git://github.com/nathancolgate/s3-swf-upload-plugin.git</code>
 * copy the "template files":http://github.com/nathancolgate/s3-swf-upload-plugin/tree/master/lib/s3_swf_upload/railties/generators/uploader/templates/ into your application (use the "generator":http://github.com/nathancolgate/s3-swf-upload-plugin/blob/master/lib/s3_swf_upload/railties/generators/uploader/uploader_generator.rb as a road map)
 * copy the "view helpers":http://github.com/nathancolgate/s3-swf-upload-plugin/blob/master/lib/s3_swf_upload/view_helpers.rb into your applications <code>/lib</code> directory.
-* add the view helper to an initialization file: <code>require 'view_helpers'</code>
+* add the view helper and integer monkey patch to an initialization file:
+<code>
+  require 'view_helpers'
+  require 'patch/integer'
+</code>
 * load the config file by adding this to the bottom of your environment.rb file: <code>S3SwfUpload::S3Config.load_config</code>
 * replace references to Rails.root or Rails.env in the <code>/vendor/plugins/s3-swf-upload-plugin/lib/s3_swf_upload/s3_config.rb</code> file.
 * comment out the require railties inside <code>/vendor/plugins/s3-swf-upload-plugin/lib/s3_swf_upload.rb</code>
