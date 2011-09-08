@@ -76,12 +76,25 @@ package com.nathancolgate.s3_swf_upload {
 		}
         
 		private function completeHandler(event:Event):void{
+            // prepare to destroy
+            removeListeners();
+            removeEventListener(Event.OPEN, openHandler);
+            removeEventListener(ProgressEvent.PROGRESS, progressHandler);
+            removeEventListener(IOErrorEvent.IO_ERROR, ioErrorHandler);
+            removeEventListener(SecurityErrorEvent.SECURITY_ERROR, securityErrorHandler);
+            removeEventListener(HTTPStatusEvent.HTTP_STATUS, httpStatusHandler);
+            removeEventListener(DataEvent.UPLOAD_COMPLETE_DATA, completeHandler);
+
+            // callback
 			// ExternalInterface.call('s3_swf.jsLog','completeHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadComplete...');
 			ExternalInterface.call('s3_swf.onUploadComplete',_upload_options,event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadComplete called');
 			// ExternalInterface.call('s3_swf.jsLog','Removing item from global queue...');
-			Globals.queue.removeItemAt(0);
+
+            // destroy
+            Globals.queue.removeItemAt(0);
+
 			// ExternalInterface.call('s3_swf.jsLog','Item removed from global queue');
 			if (Globals.queue.length > 0){
 				// ExternalInterface.call('s3_swf.jsLog','Uploading next item in global queue...');
