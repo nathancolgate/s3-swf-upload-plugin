@@ -31,6 +31,8 @@ gem 'aws-s3', :require => 'aws/s3'
 
 <pre><code>$ rails generate s3_swf_upload:uploader
 </code></pre>
+
+If you are using Rails 3.1, you will need to move the generated s3_upload.js from the public/javascripts directory to the app/assets/javascripts directory.
 	
 4. Configure your amazon parameters via the generated <code>config/amazon_s3.yml</code> file.
 
