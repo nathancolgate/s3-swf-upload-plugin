@@ -112,6 +112,10 @@ h3. :signaturePath _(string = '/s3_uploads.xml')_
 
 Fully qualified path to the controller and action that will serve up the Amazon S3 signature
 
+h3. :swfFilePath _(string = '/flash/s3_upload.swf')_
+
+Fully qualified path to the SWF file (this is the one that does all the work).
+
 h3. :buttonUpPath _(string = '/flash/s3_up_button.gif')_
 
 Fully qualified path to an image to be used as the Browse Button (in the up state).  Image should have same dimensions as the buttonWidth and buttonHeight parameters.
