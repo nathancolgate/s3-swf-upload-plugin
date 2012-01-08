@@ -3,7 +3,7 @@ package  {
 	import flash.events.*;
 	import flash.external.*;
 	import flash.net.*;
-	import flash.display.Sprite;
+	import flash.display.*;
 	import flash.system.Security;
 	import com.nathancolgate.s3_swf_upload.*;
 	
@@ -23,16 +23,18 @@ package  {
 		private var _selectMultipleFiles:Boolean;
 		
 		private var cssLoader:URLLoader;
+		public static var s3_swf_obj:String;
 		
 		public function S3Uploader() {
 			super();
+			S3Uploader.s3_swf_obj = LoaderInfo(root.loaderInfo).parameters.s3_swf_obj;
 			registerCallbacks();
 		}
 
 		private function registerCallbacks():void {
 			if (ExternalInterface.available) {
 				ExternalInterface.addCallback("init", init);
-				ExternalInterface.call('s3_swf.init');
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.init');
 			}
 		}
 
@@ -131,7 +133,7 @@ package  {
 			
 			if(tooMany == true) {
 				// ExternalInterface.call('s3_swf.jsLog','Calling onQueueSizeLimitReached...');
-				ExternalInterface.call('s3_swf.onQueueSizeLimitReached',this.queue.toJavascript());
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onQueueSizeLimitReached',this.queue.toJavascript());
 				// ExternalInterface.call('s3_swf.jsLog','onQueueSizeLimitReached called');
 			}
 
@@ -146,11 +148,11 @@ package  {
 				this.queue.addItem(file);
 				// ExternalInterface.call('s3_swf.jsLog','File added to queue');
 				// ExternalInterface.call('s3_swf.jsLog','Calling onFileAdd...');
-				ExternalInterface.call('s3_swf.onFileAdd',toJavascript(file));
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onFileAdd',toJavascript(file));
 				// ExternalInterface.call('s3_swf.jsLog','onFileAdd called');
 			}  else {
 				// ExternalInterface.call('s3_swf.jsLog','Calling onFileSizeLimitReached...');
-				ExternalInterface.call('s3_swf.onFileSizeLimitReached',toJavascript(file));
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onFileSizeLimitReached',toJavascript(file));
 				// ExternalInterface.call('s3_swf.jsLog','onFileSizeLimitReached called');
 			}
 		}
@@ -162,11 +164,11 @@ package  {
 				var del_file:FileReference = FileReference(this.queue.getItemAt(index));
 				this.queue.removeItemAt(index);
 				// ExternalInterface.call('s3_swf.jsLog','Calling onFileRemove...');
-				ExternalInterface.call('s3_swf.onFileRemove',del_file);
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onFileRemove',del_file);
 				// ExternalInterface.call('s3_swf.jsLog','onFileRemove called');
 			} catch(e:Error) {	
 				// ExternalInterface.call('s3_swf.jsLog','Calling onFileNotInQueue...');
-				ExternalInterface.call('s3_swf.onFileNotInQueue');
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onFileNotInQueue');
 				// ExternalInterface.call('s3_swf.jsLog','onFileNotInQueue called');
 			}
 		}

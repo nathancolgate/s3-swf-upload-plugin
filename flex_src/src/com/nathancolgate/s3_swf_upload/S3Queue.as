@@ -42,7 +42,7 @@ package com.nathancolgate.s3_swf_upload {
 		private function changeHandler(event:CollectionEvent):void{
 			// ExternalInterface.call('s3_swf.jsLog','changeHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onQueueChange...');
-			ExternalInterface.call('s3_swf.onQueueChange',this.toJavascript());
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onQueueChange',this.toJavascript());
 			// ExternalInterface.call('s3_swf.jsLog','onQueueChange called');      
 		}
 		
@@ -53,7 +53,7 @@ package com.nathancolgate.s3_swf_upload {
 			this.removeAll();
 			// ExternalInterface.call('s3_swf.jsLog','All removed');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onQueueClear...');
-			ExternalInterface.call('s3_swf.onQueueClear',this.toJavascript());
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onQueueClear',this.toJavascript());
 			// ExternalInterface.call('s3_swf.jsLog','onQueueClear called');
 		}
 
@@ -62,14 +62,14 @@ package com.nathancolgate.s3_swf_upload {
 			// ExternalInterface.call('s3_swf.jsLog','startUploadingHandler');
 			if (this.length > 0){
 				// ExternalInterface.call('s3_swf.jsLog','Calling onUploadingStart...');
-				ExternalInterface.call('s3_swf.onUploadingStart');
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadingStart');
 				// ExternalInterface.call('s3_swf.jsLog','onUploadingStart called');
 	      // ExternalInterface.call('s3_swf.jsLog','Uploading next file...');
 				uploadNextFile();
 				// ExternalInterface.call('s3_swf.jsLog','Next file uploaded');
 			} else {
 				// ExternalInterface.call('s3_swf.jsLog','Calling onQueueEmpty...');
-				ExternalInterface.call('s3_swf.onQueueEmpty',this);
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onQueueEmpty',this);
 				// ExternalInterface.call('s3_swf.jsLog','onQueueEmpty called');
 			}
 		}
@@ -87,11 +87,11 @@ package com.nathancolgate.s3_swf_upload {
 
 				// ExternalInterface.call('s3_swf.jsLog','Current file cancelled');
 				// ExternalInterface.call('s3_swf.jsLog','Calling onUploadingStop...');
-				ExternalInterface.call('s3_swf.onUploadingStop');
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadingStop');
 				// ExternalInterface.call('s3_swf.jsLog','onUploadingStop called');
 	    } else {
 				// ExternalInterface.call('s3_swf.jsLog','Calling onQueueEmpty...');
-				ExternalInterface.call('s3_swf.onQueueEmpty',this.toJavascript());
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onQueueEmpty',this.toJavascript());
 				// ExternalInterface.call('s3_swf.jsLog','onQueueEmpty called');
 			}
 		}

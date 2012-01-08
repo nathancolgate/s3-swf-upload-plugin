@@ -27,7 +27,7 @@ package com.nathancolgate.s3_swf_upload {
 				var next_file:FileReference = FileReference(Globals.queue.getItemAt(0));
 				this.upload(next_file);
 			} catch(error:Error) {
-				ExternalInterface.call('s3_swf.onUploadError',_upload_options,error);
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadError',_upload_options,error);
 	    }
 		}
 		
@@ -39,7 +39,7 @@ package com.nathancolgate.s3_swf_upload {
 			// BUG BUG BUG!
 			// ExternalInterface.call('s3_swf.jsLog','openHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadOpen...');
-			ExternalInterface.call('s3_swf.onUploadOpen',_upload_options,event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadOpen',_upload_options,event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadOpen called');
 		}
 
@@ -48,7 +48,7 @@ package com.nathancolgate.s3_swf_upload {
 		private function progressHandler(progress_event:ProgressEvent):void {
 			// ExternalInterface.call('s3_swf.jsLog','progressHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadProgress...');
-			ExternalInterface.call('s3_swf.onUploadProgress',_upload_options,progress_event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadProgress',_upload_options,progress_event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadProgress called');
 		}
 
@@ -56,14 +56,14 @@ package com.nathancolgate.s3_swf_upload {
 		private function ioErrorHandler(io_error_event:IOErrorEvent):void{
 			// ExternalInterface.call('s3_swf.jsLog','ioErrorHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadIOError...');
-			ExternalInterface.call('s3_swf.onUploadIOError',_upload_options,io_error_event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadIOError',_upload_options,io_error_event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadIOError called');
 		}    
 
 		private function httpStatusHandler(http_status_event:HTTPStatusEvent):void {
 			// ExternalInterface.call('s3_swf.jsLog','httpStatusHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadHttpStatus...');
-			ExternalInterface.call('s3_swf.onUploadHttpStatus',_upload_options,http_status_event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadHttpStatus',_upload_options,http_status_event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadHttpStatus called');
 		}
 		
@@ -71,7 +71,7 @@ package com.nathancolgate.s3_swf_upload {
 		private function securityErrorHandler(security_error_event:SecurityErrorEvent):void{
 			// ExternalInterface.call('s3_swf.jsLog','securityErrorHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadSecurityError...');
-			ExternalInterface.call('s3_swf.onUploadSecurityError',_upload_options,security_error_event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadSecurityError',_upload_options,security_error_event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadSecurityError called');
 		}
         
@@ -88,7 +88,7 @@ package com.nathancolgate.s3_swf_upload {
             // callback
 			// ExternalInterface.call('s3_swf.jsLog','completeHandler');
 			// ExternalInterface.call('s3_swf.jsLog','Calling onUploadComplete...');
-			ExternalInterface.call('s3_swf.onUploadComplete',_upload_options,event);
+			ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadComplete',_upload_options,event);
 			// ExternalInterface.call('s3_swf.jsLog','onUploadComplete called');
 			// ExternalInterface.call('s3_swf.jsLog','Removing item from global queue...');
 
@@ -102,7 +102,7 @@ package com.nathancolgate.s3_swf_upload {
 				// ExternalInterface.call('s3_swf.jsLog','Next ttem in global queue uploaded');
 			} else {
 				// ExternalInterface.call('s3_swf.jsLog','Calling onUploadingFinish...');
-				ExternalInterface.call('s3_swf.onUploadingFinish');
+				ExternalInterface.call(S3Uploader.s3_swf_obj+'.onUploadingFinish');
 				// ExternalInterface.call('s3_swf.jsLog','onUploadingFinish called');
 			}
 		}
