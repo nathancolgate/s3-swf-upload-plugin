@@ -16,7 +16,7 @@ There is also a demo app running on heroku at "http://s3swfuploader.heroku.com/"
 
 h2. Usage
 
-1. Edit <code>Gemfile</code> and add this as a gem, you'll also need aws-s3
+1. Edit <code>Gemfile</code> and add this as a gem
 
 <pre><code>gem 's3_swf_upload', :git => 'git://github.com/nathancolgate/s3-swf-upload-plugin'
 </code></pre>
