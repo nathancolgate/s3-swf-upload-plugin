@@ -18,8 +18,8 @@ module S3SwfUpload
           raise "Could not load config options for #{Rails.env} from #{filename}."
         end
 
-        @@access_key_id     = config['access_key_id']
-        @@secret_access_key = config['secret_access_key']
+        @@access_key_id     = config['access_key_id'] || ENV['AWS_ACCESS_KEY_ID']
+        @@secret_access_key = config['secret_access_key'] || ENV['AWS_SECRET_ACCESS_KEY']
         @@bucket            = config['bucket']
         @@max_file_size     = config['max_file_size']
         @@acl               = config['acl'] || 'private'
