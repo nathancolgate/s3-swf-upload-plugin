@@ -13,6 +13,7 @@ package com.elctech {
         public var ContentEncoding:String;
         public var Expires:String;
         public var key:String;
+        public var newKey:String;
         public var policy:String;
         public var successactionredirect:String;
         public var redirect:String;
