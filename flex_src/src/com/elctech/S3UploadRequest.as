@@ -63,6 +63,7 @@ package com.elctech {
             
             if (options.newKey) {  //NOTE that we stop caring about the specified prefix if we have a newkey.
               _key = options.newKey;
+              options.key = options.newKey; //so we output the right value in callbacks, etc.
             }
 		}
 
