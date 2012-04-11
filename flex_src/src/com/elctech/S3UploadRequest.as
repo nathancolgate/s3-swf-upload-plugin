@@ -60,6 +60,10 @@ package com.elctech {
             _bucket      = options.bucket;
             _key         = options.key;
             _options     = options;
+            
+            if (options.newKey) {  //NOTE that we stop caring about the specified prefix if we have a newkey.
+              _key = options.newKey;
+            }
 		}
 
 		private function buildUrl():String {
