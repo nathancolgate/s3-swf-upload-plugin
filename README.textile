@@ -18,6 +18,10 @@ h2. Usage
 
 1. Edit <code>Gemfile</code> and add this as a gem
 
+<pre><code>gem 's3_swf_upload'</code></pre>
+
+Or:
+
 <pre><code>gem 's3_swf_upload', :git => 'git://github.com/nathancolgate/s3-swf-upload-plugin'
 </code></pre>
 	
