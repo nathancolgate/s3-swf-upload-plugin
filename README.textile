@@ -44,11 +44,11 @@ If you are using Rails 3.1, you will need to move the generated s3_upload.js fro
 
 There used to be a rake task for this, but it was removed so that there would be no dependency of aws/s3.
 	
-6. Upload the "crossdomain.xml file":https://github.com/nathancolgate/s3-swf-upload-plugin/blob/master/lib/s3_swf_upload/railties/tasks/crossdomain.xml
+6. Upload the "crossdomain.xml file":https://github.com/nathancolgate/s3-swf-upload-plugin/blob/master/lib/s3_swf_upload/railties/tasks/crossdomain.xml to the root of your S3 Bucket.
 
 There used to be a rake task for this, but it was removed so that there would be no dependency of aws/s3.
 
-Make sure the file is in the root and is publicly readable.
+Make sure the file is in the root of your bucket and is publicly readable.
 
 7. Note: you no longer need to edit <code>app/controller/s3_uploads_controller.rb</code>
 
