@@ -13,6 +13,7 @@ class S3UploadsController < ApplicationController
     access_key_id   = S3SwfUpload::S3Config.access_key_id
     acl             = S3SwfUpload::S3Config.acl
     secret_key      = S3SwfUpload::S3Config.secret_access_key
+    max_file_size   = S3SwfUpload::S3Config.max_file_size
     key             = params[:key]
     content_type    = params[:content_type]
     https           = 'false'
@@ -28,6 +29,7 @@ class S3UploadsController < ApplicationController
         {'acl': '#{acl}'},
         {'Content-Type': '#{content_type}'},
         {'Content-Disposition': 'attachment'},
+        ['content-length-range', 1, #{max_file_size}],
         ['starts-with', '$Filename', ''],
         ['eq', '$success_action_status', '201']
     ]

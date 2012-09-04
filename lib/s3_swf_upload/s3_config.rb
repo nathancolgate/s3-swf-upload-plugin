@@ -21,7 +21,7 @@ module S3SwfUpload
         @@access_key_id     = config['access_key_id'] || ENV['AWS_ACCESS_KEY_ID']
         @@secret_access_key = config['secret_access_key'] || ENV['AWS_SECRET_ACCESS_KEY']
         @@bucket            = config['bucket']
-        @@max_file_size     = config['max_file_size']
+        @@max_file_size     = config['max_file_size'] || 5000000000 
         @@acl               = config['acl'] || 'private'
 
         
