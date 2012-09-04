@@ -29,7 +29,7 @@ class S3UploadsController < ApplicationController
         {'acl': '#{acl}'},
         {'Content-Type': '#{content_type}'},
         {'Content-Disposition': 'attachment'},
-        ['content-length-range', 1, #{max_file_size}]
+        ['content-length-range', 1, #{max_file_size}],
         ['starts-with', '$Filename', ''],
         ['eq', '$success_action_status', '201']
     ]
