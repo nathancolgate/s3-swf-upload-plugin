@@ -185,7 +185,7 @@ package com.elctech {
             postVariables.AWSAccessKeyId          = _accessKeyId;
             postVariables.signature               = _options.signature;
             postVariables["Content-Type"]         = _options.ContentType;
-            postVariables["Content-Disposition"]  = "attachment";
+            postVariables["Content-Disposition"]  = _options.ContentDisposition;
             postVariables.policy                  = _options.policy;
             
             /**
