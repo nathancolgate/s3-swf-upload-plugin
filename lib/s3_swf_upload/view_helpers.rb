@@ -51,9 +51,11 @@ module S3SwfUpload
       
       out = ''
 
-      if !@include_s3_upload
-        out << javascript_include_tag('s3_upload')
-        @include_s3_upload = true
+      if Rails.version < '3.1.0'
+        if !@include_s3_upload
+          out << javascript_include_tag('s3_upload')
+          @include_s3_upload = true
+        end
       end
 
       out << "\n<script type=\"text/javascript\">\n"
