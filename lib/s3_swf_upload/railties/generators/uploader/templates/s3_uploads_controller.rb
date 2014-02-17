@@ -20,22 +20,20 @@ class S3UploadsController < ApplicationController
     https               = 'false'
     error_message       = ''
     expiration_date     = 1.hours.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z')
-
     policy = Base64.encode64(
-"{
-    'expiration': '#{expiration_date}',
-    'conditions': [
-        {'bucket': '#{bucket}'},
-        {'key': '#{key}'},
-        {'acl': '#{acl}'},
-        {'Content-Type': '#{content_type}'},
-        {'Content-Disposition': '#{content_disposition}'},
-        ['content-length-range', 1, #{max_file_size}],
-        ['starts-with', '$Filename', ''],
-        ['eq', '$success_action_status', '201']
-    ]
-}").gsub(/\n|\r/, '')
-
+             {'expiration' => expiration_date,
+              'conditions' => [
+                {'bucket' => bucket},
+                {'key'=> key},
+                {'acl'=> acl},
+                {'Content-Type'=> content_type},
+                {'Content-Disposition'=> content_disposition},
+                ['content-length-range', 1, max_file_size],
+                ['starts-with', '$Filename', ''],
+                ['eq', '$success_action_status', '201']
+              ]
+             }.to_json).gsub(/\n|\r/, '')
+    
     signature = b64_hmac_sha1(secret_key, policy)
 
     respond_to do |format|
