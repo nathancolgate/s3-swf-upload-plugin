@@ -1,2 +1,0 @@
-#!/bin/bash
-mxmlc -load-config ./bin-release/flex-config.xml ./src/S3Uploader.as -output ../lib/s3_swf_upload/railties/generators/uploader/templates/s3_upload.swf
