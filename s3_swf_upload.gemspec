@@ -3,9 +3,9 @@
 Gem::Specification.new do |s|
   s.name              = "s3_swf_upload"
   s.rubyforge_project = "s3_swf_upload"
-  s.version           = "0.3.2"
+  s.version           = "0.3.3"
   s.rubygems_version  = "1.3.6"
-  s.date              = "2010-11-16"
+  s.date              = "2014-02-18"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors       = ["Nathan Colgate"]
