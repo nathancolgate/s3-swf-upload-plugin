@@ -1,0 +1,10 @@
+Description:
+  Adds the following files to your application:
+  
+  * amazon_s3.yml config file
+  * s3_uploads_controller.rb
+  * s3_upload.js
+  * s3_upload.swf
+  
+  And then, as if that were not enough, it adds a route for you, too!
+

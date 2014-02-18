@@ -1,0 +1,20 @@
+development:
+  bucket: 
+  access_key_id: 
+  secret_access_key: 
+  max_file_size: 10485760
+  acl: public-read
+    
+test:
+  bucket: 
+  access_key_id: 
+  secret_access_key: 
+  max_file_size: 10485760
+  acl: public-read
+  
+production:
+  bucket: 
+  access_key_id: 
+  secret_access_key: 
+  max_file_size: 10485760
+  acl: public-read
