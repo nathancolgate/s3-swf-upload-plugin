@@ -52,6 +52,7 @@ Gem::Specification.new do |s|
     "lib/s3_swf_upload/s3_config.rb",
     "lib/s3_swf_upload/signature.rb",
     "lib/s3_swf_upload/view_helpers.rb",
+    "s3_swf_upload.gemspec",
     "test/helper.rb",
     "test/test_s3_swf_upload.rb"
   ]
